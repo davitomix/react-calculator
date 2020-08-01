@@ -6,12 +6,15 @@
 </p>
 
 ## Built With
+
+- Node Js
 - React
-- JS ES6
+- ES6
 - Webpack
 - Module Pattern
 - SASS
 - Jest
+- npm
 
 ## Live Demo
 
