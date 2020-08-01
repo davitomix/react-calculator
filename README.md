@@ -18,7 +18,7 @@
 
 ## Live Demo
 
-- [Heroku :rocket:](#)
+- [Heroku :rocket:](https://react-calculator-02.herokuapp.com)
 - [Githack :zap:](#)
 
 ## Usage
