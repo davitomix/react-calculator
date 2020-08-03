@@ -4,7 +4,7 @@ import Display from './Display';
 
 const App = () => (
     <div id="app">
-      <Display />
+      <Display value='0.0'/>
       <ButtonPanel />
     </div>
 );
