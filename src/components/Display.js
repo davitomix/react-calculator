@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const styles = {
+const {styles} = {
   border: 'dotted thick blue'
 };
 
@@ -14,7 +14,7 @@ const Display = (props) => {
 };
 
 Display.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 Display.defaultProps = {

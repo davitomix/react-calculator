@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const style = {
+const {style} = {
   border: 'dotted thin red',
   display: 'inline-block'
 };
