@@ -1,11 +1,14 @@
 import React from 'react';
+import ButtonPanel from './ButtonPanel';
+import Display from './Display'
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <div id="app" className="app">
-        <h1>Hello World</h1>
-      </div>
-    )
-  }
+const App = () => {
+  return (
+    <div id="app" className="app">
+      <Display/>
+      <ButtonPanel />
+    </div>
+  )
 };
+
+export default App;
