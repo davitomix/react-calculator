@@ -1,17 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Button.css';
 
-const styles = {
-  border: 'dotted thin red',
-  display: 'inline-block',
-};
+export default class Button extends React.Component {
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    orange: PropTypes.bool,
+    wide: PropTypes.bool,
+  };
 
-const Button = (props) => (
-    <div style={styles}>{props.name}</div>
-);
+  render() {
+    const classNames = [
+      'component-button',
+      this.props.orange ? 'orange' : '',
+      this.props.wide ? 'wide' : '',
+    ];
 
-Button.propTypes = {
-  name: PropTypes.string.isRequired,
-};
-
-export default Button;
+    return (
+      <div className={classNames.join(' ').trim()}>
+        <button>{this.props.name}</button>
+      </div>
+    );
+  }
+}
