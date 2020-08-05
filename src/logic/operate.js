@@ -1,15 +1,19 @@
 import Big from 'big.js';
 
+const operations = {
+  '+': 'plus',
+  '-': 'minus',
+  '×': 'times',
+  '÷': 'div',
+};
+
 const operate = (num1, num2, operand) => {
-  const numFirst = Big(num1 || 0);
-  const numSecond = Big(num2);
-  switch (operand) {
-    case '+':
-      return numFirst.plus(numSecond).toString();
-    case '-':
-      return numFirst.minus(numSecond).toString();
-    default:
-      return NaN;
+  try {
+    return operations[operand]
+      ? (Big(num1)[operations[operand]](Big(num2)))
+      : null;
+  } catch (error) {
+    return NaN;
   }
 };
 
