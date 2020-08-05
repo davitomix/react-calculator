@@ -10,7 +10,7 @@ const operations = {
 const operate = (num1, num2, operand) => {
   try {
     return operations[operand]
-      ? (Big(num1)[operations[operand]](Big(num2)))
+      ? (new Big(num1)[operations[operand]](new Big(num2)))
       : null;
   } catch (error) {
     return NaN;
