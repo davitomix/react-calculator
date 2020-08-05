@@ -7,6 +7,7 @@ const functions = {
     }
     return ({});
   },
+  AC: () => ({ total: null, next: null, operation: null }),
 };
 
 const calculate = ({ total, next, operation }, btnName) => {
