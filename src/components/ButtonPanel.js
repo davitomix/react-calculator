@@ -7,6 +7,7 @@ import './ButtonPanel.css';
 class ButtonPanel extends React.Component {
   static propTypes = {
     clickHandler: PropTypes.func.isRequired,
+    name: PropTypes.string,
   };
 
   handleClick = (buttonName) => this.props.clickHandler(buttonName);
@@ -16,7 +17,7 @@ class ButtonPanel extends React.Component {
       <div className="component-button-panel">
         <div>
           <Button name='AC' clickHandler={this.handleClick}/>
-          <Button name='+/-' clickHandler={this.handleClick}/>
+          <Button name='±' clickHandler={this.handleClick}/>
           <Button name='%' clickHandler={this.handleClick}/>
           <Button name='÷' clickHandler={this.handleClick} color='orange'/>
         </div>
