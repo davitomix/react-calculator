@@ -5,8 +5,9 @@ const operate = (num1, num2, operand) => {
   const numSecond = Big(num2);
   switch (operand) {
     case '+':
-      // .plus
       return numFirst.plus(numSecond).toString();
+    case '-':
+      return numFirst.minus(numSecond).toString();
     default:
       return NaN;
   }

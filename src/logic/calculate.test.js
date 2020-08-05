@@ -13,11 +13,15 @@ const resultSum = {
 };
 
 describe('returns an object with the correct values', () => {
-  it('the method should return an object', () => {
+  it('should return an object', () => {
     expect(calculate(fakeCalc, '=')).toBeInstanceOf(Object);
   });
 
-  it('the method should return an object', () => {
+  it('should return the correct value of sum', () => {
     expect(calculate(fakeCalc, '=')).toEqual(resultSum);
+  });
+
+  it('should return NaN to wrong input', () => {
+    expect(calculate(fakeCalc, 'd')).toEqual(null);
   });
 });
