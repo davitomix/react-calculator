@@ -1,7 +1,7 @@
 import Big from 'big.js';
 import calculate from './calculate';
 
-const fakeCalc = {
+let fakeCalc = {
   total: '100',
   next: '50',
   operation: null,
@@ -43,9 +43,9 @@ const ac = {
   operation: null,
 };
 
-const switchSign = {
-  total: new Big(-1),
-  next: new Big(-1),
+const percentage = {
+  total: new Big(5.2),
+  next: null,
   operation: null,
 };
 
@@ -86,5 +86,9 @@ describe('returns an object with the correct values', () => {
     fakeCalc.total = '1';
     fakeCalc.next = null;
     expect(calculate(fakeCalc, '±')).toEqual({ total: -1 });
+  });
+  it('should return 5.2 when given % of 520', () => {
+    fakeCalc = { total: 520, next: null, operation: '÷' };
+    expect(calculate(fakeCalc, '%')).toEqual(percentage);
   });
 });

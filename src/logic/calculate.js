@@ -7,8 +7,20 @@ const functions = {
     }
     return ({});
   },
+
   AC: () => ({ total: null, next: null, operation: null }),
+
   '±': (total, next) => (next ? ({ next: -next }) : ({ total: -total })),
+
+  '%': (total, next, operation) => {
+    if (operation) {
+      if (next !== null) {
+        return ({ total: operate(next, '100', '÷'), next: null, operation: null });
+      }
+      return ({ total: operate(total, '100', '÷'), next: null, operation: null });
+    }
+    return ({});
+  },
 };
 
 const calculate = ({ total, next, operation }, btnName) => {
