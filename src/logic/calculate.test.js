@@ -37,6 +37,18 @@ const invalidDiv = {
   operation: null,
 };
 
+const ac = {
+  total: null,
+  next: null,
+  operation: null,
+};
+
+const switchSign = {
+  total: new Big(-1),
+  next: new Big(-1),
+  operation: null,
+};
+
 describe('returns an object with the correct values', () => {
   it('should return an object', () => {
     expect(calculate(fakeCalc, '=')).toBeInstanceOf(Object);
@@ -61,5 +73,18 @@ describe('returns an object with the correct values', () => {
     fakeCalc.next = '0';
     fakeCalc.operation = '÷';
     expect(calculate(fakeCalc, '=')).toEqual(invalidDiv);
+  });
+  it('should return the obj with null when is given AC', () => {
+    expect(calculate(fakeCalc, 'AC')).toEqual(ac);
+  });
+  it('should change the sign of next when given ±', () => {
+    fakeCalc.total = '1';
+    fakeCalc.next = '1';
+    expect(calculate(fakeCalc, '±')).toEqual({ next: -1 });
+  });
+  it('should change the sign of total when given ±', () => {
+    fakeCalc.total = '1';
+    fakeCalc.next = null;
+    expect(calculate(fakeCalc, '±')).toEqual({ total: -1 });
   });
 });

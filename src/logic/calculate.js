@@ -8,12 +8,12 @@ const functions = {
     return ({});
   },
   AC: () => ({ total: null, next: null, operation: null }),
+  '±': (total, next) => (next ? ({ next: -next }) : ({ total: -total })),
 };
 
 const calculate = ({ total, next, operation }, btnName) => {
   const result = functions[btnName](total, next, operation);
-  if (result) return result;
-  return null;
+  return result;
 };
 
 export default calculate;
