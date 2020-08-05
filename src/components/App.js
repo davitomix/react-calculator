@@ -1,13 +1,26 @@
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 import ButtonPanel from './ButtonPanel';
 import Display from './Display';
 import './App.css';
 
-const App = () => (
-    <div id="app" className="component-app">
-      <Display value='0.0'/>
-      <ButtonPanel />
-    </div>
-);
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default App;
+    this.state = {
+      total: null,
+      next: null,
+      operation: null,
+    };
+  }
+
+  render() {
+    return (
+      <div id="app" >
+        <Display value='0' />
+        <ButtonPanel />
+      </div>
+    );
+  }
+};
