@@ -1,12 +1,17 @@
 import operate from './operate';
 
-const calculate = ({ total, next, operation }, btnName) => {
-  if (btnName === '=') {
+const functions = {
+  '=': (total, next, operation) => {
     if (next && operation) {
       return ({ total: operate(total, next, operation), next: null, operation: null });
     }
-  }
+    return ({});
+  },
+};
 
+const calculate = ({ total, next, operation }, btnName) => {
+  const result = functions[btnName](total, next, operation);
+  if (result) return result;
   return null;
 };
 
