@@ -1,4 +1,3 @@
-import Big from 'big.js';
 import calculate from './calculate';
 
 let fakeCalc = {
@@ -8,25 +7,25 @@ let fakeCalc = {
 };
 
 const sum = {
-  total: new Big(150),
+  total: '150',
   next: null,
   operation: null,
 };
 
 const minus = {
-  total: new Big(50),
+  total: '50',
   next: null,
   operation: null,
 };
 
 const times = {
-  total: new Big(5000),
+  total: '5000',
   next: null,
   operation: null,
 };
 
 const div = {
-  total: new Big(2),
+  total: '2',
   next: null,
   operation: null,
 };
@@ -44,7 +43,7 @@ const ac = {
 };
 
 const percentage = {
-  total: new Big(5.2),
+  total: '5.2',
   next: null,
   operation: null,
 };
@@ -78,9 +77,9 @@ describe('returns an object with the correct values', () => {
     expect(calculate(fakeCalc, 'AC')).toEqual(ac);
   });
   it('should change the sign of next when given ±', () => {
-    fakeCalc.total = '1';
-    fakeCalc.next = '1';
-    expect(calculate(fakeCalc, '±')).toEqual({ next: -1 });
+    fakeCalc.total = '5';
+    fakeCalc.next = '5';
+    expect(calculate(fakeCalc, '±')).toEqual({ next: -5 });
   });
   it('should change the sign of total when given ±', () => {
     fakeCalc.total = '1';
