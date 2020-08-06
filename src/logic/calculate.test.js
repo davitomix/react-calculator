@@ -98,10 +98,13 @@ describe('format number func', () => {
     expect(formatNumber(NaN)).toEqual(NaN);
   });
   it('returns the correct format number', () => {
-    expect(formatNumber('2000')).toBe(new Big(2000).toExponential(15).slice(0, 20));
+    expect(formatNumber('2000')).toBe('2000');
   });
   it('returns a string', () => {
     expect(typeof (formatNumber('2000'))).toBe('string');
+  });
+  it('returns the correct forma when given a max value number', () => {
+    expect(formatNumber('10000000000000001')).toBe('1.000000000000000e+1');
   });
 });
 

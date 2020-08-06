@@ -6,7 +6,7 @@ const MAX = new Big('10000000000000000');
 export const formatNumber = (number) => {
   if (isNaN(number)) return number;
   const num = new Big(number);
-  return (num > (MAX) ? num.toExponential(15) : num.toFixed()).slice(0, 20);
+  return (num.gt(MAX) ? num.toExponential(15) : num.toFixed()).slice(0, 20);
 };
 
 export const addNumber = (next, input) => {
@@ -18,7 +18,7 @@ export const addNumber = (next, input) => {
 const functions = {
   '=': (total, next, operation) => {
     if (next && operation) {
-      return ({ total: operate(total, next || total, operation), next: null, operation: null });
+      return ({ total: formatNumber(operate(total, next || total, operation)), next: null, operation: null });
     }
     return ({});
   },
@@ -32,9 +32,9 @@ const functions = {
       const result = operate(total, next || total, operation);
       if (result) {
         if (next !== null) {
-          return ({ total: operate(next, '100', '÷'), next: null, operation: null });
+          return ({ total: formatNumber(operate(next, '100', '÷')), next: null, operation: null });
         }
-        return ({ total: operate(total, '100', '÷'), next: null, operation: null });
+        return ({ total: formatNumber(operate(total, '100', '÷')), next: null, operation: null });
       }
     }
     return ({});
