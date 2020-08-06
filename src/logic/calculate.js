@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import Big from 'big.js';
 import operate from './operate';
 
@@ -41,7 +42,5 @@ const functions = {
   },
 };
 
-export const calculate = ({ total, next, operation }, btnName) => {
-  const result = functions[btnName](total, next, operation);
-  return result;
-};
+export const calculate = ({ total, next, operation }, btnName) => addNumber(next || '', btnName)
+  || functions[btnName](total, next, operation);
