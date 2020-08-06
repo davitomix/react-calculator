@@ -1,4 +1,13 @@
+import Big from 'big.js';
 import operate from './operate';
+
+const MAX = new Big('10000000000000000');
+
+export const formatNumber = (number) => {
+  if (isNaN(number)) return number;
+  const num = new Big(number);
+  return (num > (MAX) ? num.toExponential(15) : num.toFixed()).slice(0, 20);
+};
 
 const functions = {
   '=': (total, next, operation) => {
@@ -23,9 +32,7 @@ const functions = {
   },
 };
 
-const calculate = ({ total, next, operation }, btnName) => {
+export const calculate = ({ total, next, operation }, btnName) => {
   const result = functions[btnName](total, next, operation);
   return result;
 };
-
-export default calculate;

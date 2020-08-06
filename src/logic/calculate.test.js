@@ -1,4 +1,5 @@
-import calculate from './calculate';
+import Big from 'big.js';
+import { calculate, formatNumber } from './calculate';
 
 let fakeCalc = {
   total: '100',
@@ -89,5 +90,17 @@ describe('returns an object with the correct values', () => {
   it('should return 5.2 when given % of 520', () => {
     fakeCalc = { total: 520, next: null, operation: '÷' };
     expect(calculate(fakeCalc, '%')).toEqual(percentage);
+  });
+});
+
+describe('format number func', () => {
+  it('returns nan when given nan', () => {
+    expect(formatNumber(NaN)).toEqual(NaN);
+  });
+  it('returns the correct format number', () => {
+    expect(formatNumber('2000')).toBe(new Big(2000).toExponential(15).slice(0, 20));
+  });
+  it('returns a string', () => {
+    expect(typeof (formatNumber('2000'))).toBe('string');
   });
 });
