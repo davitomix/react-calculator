@@ -1,5 +1,4 @@
-import Big from 'big.js';
-import { calculate, formatNumber, addNumber } from './calculate';
+import { calculate, formatNumber, addNumber, setOperation } from './calculate';
 
 let fakeCalc = {
   total: '100',
@@ -123,5 +122,20 @@ describe('add number func', () => {
   });
   it('returns the same number when the given number has already a dot', () => {
     expect(addNumber('99.9', '.').next).toBe('99.9');
+  });
+});
+
+describe('set operation func', () => {
+  it('should return null when operation isnt valid', () => {
+    expect(setOperation(null, null, 'r', null)).toBe(null);
+  });
+  it('should return total with the correct value', () => {
+    expect(setOperation('5', '4', '+', '+').total).toBe('9');
+  });
+  it('should return NaN when given worng arguments', () => {
+    expect(setOperation('5', '+', '+', '+').total).toBe(NaN);
+  });
+  it('should return next when no op', () => {
+    expect(setOperation('5', '4', null, '+').total).toBe('4');
   });
 });

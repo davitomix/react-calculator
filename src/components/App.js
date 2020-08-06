@@ -25,12 +25,12 @@ export default class App extends React.Component {
   }
 
   render() {
-    const { total, next, operation } = this.state;
-    const value = next || operation || (isNaN(total)) ? 'Error' : total || '0';
+    const { total, next } = this.state;
+    const value = next || (isNaN(total) ? 'Error' : total);
     console.log(value);
     return (
       <div id="app" >
-        <Display value={value.toString()} />
+        <Display value={value} />
         <ButtonPanel clickHandler={this.handleClick}/>
       </div>
     );

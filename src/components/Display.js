@@ -11,7 +11,7 @@ const Display = (props) => (
 );
 
 Display.propTypes = {
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 Display.defaultProps = {

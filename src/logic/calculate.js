@@ -42,5 +42,16 @@ const functions = {
   },
 };
 
+export const setOperation = (total, next, operation, buttonName) => {
+  if (operate.isValid(buttonName)) {
+    if (operation) {
+      next = functions['='](total, next, operation).total;
+    }
+    return { total: next, next: null, operation: buttonName };
+  }
+  return null;
+};
+
 export const calculate = ({ total, next, operation }, btnName) => addNumber(next || '', btnName)
+  || setOperation(total, next || total, operation, btnName)
   || functions[btnName](total, next, operation);
