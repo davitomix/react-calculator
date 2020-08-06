@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
 import ButtonPanel from './ButtonPanel';
@@ -20,14 +19,12 @@ export default class App extends React.Component {
 
   handleClick(buttonName) {
     const newState = calculate(this.state, buttonName);
-    // console.log(newState);
     this.setState(newState);
   }
 
   render() {
     const { total, next } = this.state;
     const value = next || (isNaN(total) ? 'Error' : total);
-    console.log(value);
     return (
       <div id="app" >
         <Display value={value} />
