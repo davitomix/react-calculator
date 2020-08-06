@@ -9,10 +9,16 @@ export const formatNumber = (number) => {
   return (num > (MAX) ? num.toExponential(15) : num.toFixed()).slice(0, 20);
 };
 
+export const addNumber = (next, input) => {
+  if (input >= '0' && input <= '9') return { next: next + input };
+  if (input === '.') return next.includes('.') ? { next } : { next: next + input };
+  return null;
+};
+
 const functions = {
   '=': (total, next, operation) => {
     if (next && operation) {
-      return ({ total: operate(total, next, operation), next: null, operation: null });
+      return ({ total: operate(total, next || total, operation), next: null, operation: null });
     }
     return ({});
   },
@@ -23,10 +29,13 @@ const functions = {
 
   '%': (total, next, operation) => {
     if (operation) {
-      if (next !== null) {
-        return ({ total: operate(next, '100', '÷'), next: null, operation: null });
+      const result = operate(total, next || total, operation);
+      if (result) {
+        if (next !== null) {
+          return ({ total: operate(next, '100', '÷'), next: null, operation: null });
+        }
+        return ({ total: operate(total, '100', '÷'), next: null, operation: null });
       }
-      return ({ total: operate(total, '100', '÷'), next: null, operation: null });
     }
     return ({});
   },

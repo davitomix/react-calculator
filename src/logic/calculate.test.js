@@ -1,5 +1,5 @@
 import Big from 'big.js';
-import { calculate, formatNumber } from './calculate';
+import { calculate, formatNumber, addNumber } from './calculate';
 
 let fakeCalc = {
   total: '100',
@@ -102,5 +102,23 @@ describe('format number func', () => {
   });
   it('returns a string', () => {
     expect(typeof (formatNumber('2000'))).toBe('string');
+  });
+});
+
+describe('add number func', () => {
+  it('returns null no inputs is given', () => {
+    expect(addNumber(null, '9999')).toBe(null);
+  });
+  it('returns 99 adding 9 and 9', () => {
+    expect(addNumber('9', '6').next).toBe('96');
+  });
+  it('returns 99. adding a decimal point', () => {
+    expect(addNumber('99', '.').next).toBe('99.');
+  });
+  it('returns 99.9 when given a number with deciaml point', () => {
+    expect(addNumber('99.', '9').next).toBe('99.9');
+  });
+  it('returns the same number when the given number has already a dot', () => {
+    expect(addNumber('99.9', '.').next).toBe('99.9');
   });
 });
