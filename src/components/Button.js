@@ -2,13 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.css';
 
-export default class Button extends React.Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    color: PropTypes.string,
-    wide: PropTypes.bool,
-    clickHandler: PropTypes.func.isRequired,
-  };
+class Button extends React.Component {
 
   handleClick = () => this.props.clickHandler(this.props.name);
 
@@ -26,3 +20,18 @@ export default class Button extends React.Component {
     );
   }
 }
+
+Button.propTypes = {
+  name: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  wide: PropTypes.bool,
+  // eslint-disable-next-line react/no-unused-prop-types
+  clickHandler: PropTypes.func.isRequired,
+};
+
+Button.defaultProps = {
+  color: 'orange',
+  wide: false,
+};
+
+export default Button;
