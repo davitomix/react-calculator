@@ -2,7 +2,7 @@
 > This is a simple calculator app built with ReactJs.
 
 <p align="center">
-  <img src="./">
+  <img src="./demo.gif">
 </p>
 
 ## Built With
