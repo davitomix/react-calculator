@@ -1,4 +1,6 @@
-import { calculate, formatNumber, addNumber, setOperation } from './calculate';
+import {
+  calculate, formatNumber, addNumber, setOperation,
+} from './calculate';
 
 let fakeCalc = {
   total: '100',

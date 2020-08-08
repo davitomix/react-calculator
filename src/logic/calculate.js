@@ -4,7 +4,8 @@ import operate from './operate';
 
 const MAX = new Big('10000000000000000');
 
-export const formatNumber = (number) => {
+export const formatNumber = number => {
+  // eslint-disable-next-line no-restricted-globals
   if (isNaN(number)) return number;
   const num = new Big(number);
   return (num.gt(MAX) ? num.toExponential(15) : num.toFixed()).slice(0, 20);
@@ -45,6 +46,7 @@ const functions = {
 export const setOperation = (total, next, operation, buttonName) => {
   if (operate.isValid(buttonName)) {
     if (operation) {
+      // eslint-disable-next-line no-param-reassign
       next = functions['='](total, next, operation).total;
     }
     return { total: next, next: null, operation: buttonName };

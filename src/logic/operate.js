@@ -17,6 +17,6 @@ const operate = (num1, num2, operand) => {
   }
 };
 
-operate.isValid = (operation) => !!operations[operation];
+operate.isValid = operation => !!operations[operation];
 
 export default operate;

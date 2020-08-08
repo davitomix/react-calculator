@@ -18,7 +18,7 @@
 
 ## Live Demo
 
-- [Heroku :rocket:](https://react-calculator-02.herokuapp.com)
+- [Heroku :rocket:](#)
 - [Githack :zap:](#)
 
 ## Usage
@@ -26,13 +26,13 @@
 > Clone the repository to your local machine
 
 ```sh
-$ git clone https://github.com/davitomix/platform_game
+$ git clone https://github.com/davitomix/react-calculator
 ```
 
 > cd into the directory, install dependencies, build and start
 
 ```sh
-$ cd platform_game
+$ cd react-calculator
 $ npm install
 $ npm start
 ```

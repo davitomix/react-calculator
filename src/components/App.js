@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable class-methods-use-this */
 import React from 'react';
 import ButtonPanel from './ButtonPanel';
@@ -24,11 +26,12 @@ export default class App extends React.Component {
 
   render() {
     const { total, next } = this.state;
+    // eslint-disable-next-line no-restricted-globals
     const value = next || (isNaN(total) ? 'Error' : total);
     return (
-      <div id="app" >
+      <div id="app">
         <Display value={value} />
-        <ButtonPanel clickHandler={this.handleClick}/>
+        <ButtonPanel clickHandler={this.handleClick} />
       </div>
     );
   }
