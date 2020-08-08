@@ -1,10 +1,18 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Button.css';
 
 class Button extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  handleClick = () => this.props.clickHandler(this.props.name);
+  handleClick() {
+    this.props.clickHandler(this.props.name);
+  }
 
   render() {
     const classNames = [
