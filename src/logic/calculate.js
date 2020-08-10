@@ -29,18 +29,7 @@ const functions = {
 
   '±': (total, next) => (next ? ({ next: -next }) : ({ total: -total })),
 
-  '%': (total, next, operation) => {
-    if (operation) {
-      const result = operate(total, next || total, operation);
-      if (result) {
-        if (next !== null) {
-          return ({ total: formatNumber(operate(next, '100', '÷')), next: null, operation: null });
-        }
-        return ({ total: formatNumber(operate(total, '100', '÷')), next: null, operation: null });
-      }
-    }
-    return ({});
-  },
+  '%': (total, next) => ({ total: formatNumber(operate(next, '100', '÷')), next: null, operation: null }),
 };
 
 export const setOperation = (total, next, operation, buttonName) => {
