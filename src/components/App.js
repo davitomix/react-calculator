@@ -1,13 +1,38 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable class-methods-use-this */
 import React from 'react';
 import ButtonPanel from './ButtonPanel';
 import Display from './Display';
 import './App.css';
+import { calculate } from '../logic/calculate';
 
-const App = () => (
-    <div id="app" className="component-app">
-      <Display value='0.0'/>
-      <ButtonPanel />
-    </div>
-);
+export default class App extends React.Component {
+  constructor(props) {
+    super(props);
 
-export default App;
+    this.state = {
+      total: null,
+      next: null,
+      operation: null,
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(buttonName) {
+    const newState = calculate(this.state, buttonName);
+    this.setState(newState);
+  }
+
+  render() {
+    const { total, next } = this.state;
+    // eslint-disable-next-line no-restricted-globals
+    const value = next || (isNaN(total) ? 'Error' : total);
+    return (
+      <div id="app">
+        <Display value={value} />
+        <ButtonPanel clickHandler={this.handleClick} />
+      </div>
+    );
+  }
+}

@@ -1,21 +1,20 @@
-import Big from 'big.js';
 import operate from './operate';
 
 describe('Should return the correct values', () => {
   it('should return a String', () => {
-    expect(operate(2, 3, '+')).toBeInstanceOf(Big);
+    expect(typeof (operate(2, 3, '+'))).toBe('string');
   });
   it('correctly performs a sum', () => {
-    expect(operate(2, 3, '+')).toEqual(new Big(5));
+    expect(operate(2, 3, '+')).toEqual('5');
   });
   it('correctly perfomrs a minus', () => {
-    expect(operate(2, 1, '-')).toEqual(new Big(1));
+    expect(operate(2, 1, '-')).toEqual('1');
   });
   it('correctly performs a multipltication', () => {
-    expect(operate(2, 5, '×')).toEqual(new Big(10));
+    expect(operate(2, 5, '×')).toEqual('10');
   });
   it('correctly performs a division', () => {
-    expect(operate(10, 2, '÷')).toEqual(new Big(5));
+    expect(operate(10, 2, '÷')).toEqual('5');
   });
   it('correctly handle division by zero', () => {
     expect(operate(10, 0, '÷')).toEqual(NaN);
