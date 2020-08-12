@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-const styles = {
-  border: 'dotted thin blue',
-};
+import './Display.css';
 
 const Display = (props) => (
-    <div style={styles}>
-      {props.value}
+    <div className="component-display">
+      <div>
+        {props.value}
+      </div>
     </div>
 );
 
